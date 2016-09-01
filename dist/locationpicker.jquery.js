@@ -1,4 +1,4 @@
-/*! jquery-locationpicker - v0.1.13 - 2016-03-11 */
+/*! jquery-locationpicker - v0.1.13 - 2016-09-01 */
 (function($) {
     function GMapContext(domElement, options) {
         var _map = new google.maps.Map(domElement, options);
@@ -293,8 +293,9 @@
             var gmapContext = new GMapContext(this, {
                 zoom: settings.zoom,
                 center: new google.maps.LatLng(settings.location.latitude, settings.location.longitude),
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeId: settings.mapTypeId,
                 mapTypeControl: false,
+                styles: settings.styles,
                 disableDoubleClickZoom: false,
                 scrollwheel: settings.scrollwheel,
                 streetViewControl: false,
@@ -327,6 +328,8 @@
         locationName: "",
         radius: 500,
         zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [],
         scrollwheel: true,
         inputBinding: {
             latitudeInput: null,
